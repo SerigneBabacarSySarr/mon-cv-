@@ -1,80 +1,111 @@
-:root{
-  --primary: #1a4b8c; /* bleu professionnel */
-  --bg: #f5f7fa;
-  --card: #ffffff;
-  --text: #2c3e50;
-  --muted: #718096;
-  --max-width: 1100px;
-}
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('CV chargé — bienvenue !');
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
+  // Données du CV (exemple). Remplacez / dynamisez si nécessaire.
+  const cvData = {
+    name: 'Serigne Babacar Sy Sarr',
+    role: 'Étudiant en Licence 2 — Développement Web',
+    summary: "Étudiant en informatique motivé, spécialisé en développement front-end et administration système. Axé sur l'accessibilité et la qualité du code.",
+    contact: {
+      email: 'sbabacar986@gmail.com',
+      phone: '+221778547883',
+      location: 'Tivaouane, Thiès, Sénégal',
+      whatsapp: 'https://wa.me/221778547883'
+    },
+    skills: ['HTML', 'CSS', 'JavaScript', 'Git', 'Responsive Design'],
+    languages: ['Français', 'Wolof', 'Anglais (lecture)'],
+    experience: [
+      {role: 'Maintenance & Réglage', company: 'Atelier local', dates: '2022', desc: 'Réglage et maintenance de machines; diagnostics et réparations.'},
+      {role: 'Initiation Systèmes', company: 'Projet universitaire', dates: '2023', desc: 'Support et introduction aux systèmes informatiques pour étudiants.'}
+    ],
+    education: [
+      {degree: 'Licence 2 Informatique', school: 'Université', dates: '2024 — en cours'},
+      {degree: 'Baccalauréat S2', school: 'Lycée', dates: '2023'}
+    ],
+    projects: [
+      {name: 'Portfolio Web', desc: 'Site personnel responsive et accessible.'}
+    ]
+  };
 
-.page{max-width:var(--max-width);margin:24px auto;padding:16px}
+  // Rendu des sections
+  const $ = sel => document.querySelector(sel);
+  $('#name').textContent = cvData.name;
+  $('#role').textContent = cvData.role;
+  $('#summaryText').textContent = cvData.summary;
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-.page-header{margin-bottom:12px}
-.header-inner{display:flex;justify-content:space-between;align-items:center}
-.name-block h1{margin:0;font-size:1.6rem}
-.muted{color:var(--muted);margin:4px 0 0}
+  // Contact
+  const contactEl = $('#contact');
+  if (contactEl) {
+    contactEl.querySelector('a[href^="mailto:"]').textContent = cvData.contact.email;
+    contactEl.querySelector('a[href^="mailto:"]').href = `mailto:${cvData.contact.email}`;
+    contactEl.querySelector('a[href^="tel:"]').textContent = cvData.contact.phone;
+    contactEl.querySelector('a[href^="tel:"]').href = `tel:${cvData.contact.phone}`;
+    const wa = contactEl.querySelector('a[href*="wa.me"]');
+    if (wa) wa.href = cvData.contact.whatsapp;
+  }
 
-.btn{background:var(--primary);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
-.btn:hover{opacity:0.95}
-.btn-ghost{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+  // Skills
+  const skillsEl = $('#skills');
+  if (skillsEl) {
+    const ul = skillsEl.querySelector('ul');
+    if (ul) {
+      ul.innerHTML = cvData.skills.map(s => `<li>${s}</li>`).join('');
+    }
+  }
 
-.cv-container{display:flex;gap:20px;background:var(--card);border-radius:10px;overflow:hidden;box-shadow:0 10px 30px rgba(12,15,20,0.06)}
+  // Languages
+  const languagesEl = $('#languages');
+  if (languagesEl) {
+    const ul = languagesEl.querySelector('ul');
+    if (ul) ul.innerHTML = cvData.languages.map(l => `<li>${l}</li>`).join('');
+  }
 
-.sidebar{background:#f8fafb;padding:28px;width:320px}
-.profile{display:flex;flex-direction:column;align-items:center;text-align:center}
-.photo{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid rgba(11,94,111,0.06)}
-.profile-name{margin:12px 0 4px;font-size:1.1rem}
-.profile-title{margin:0;color:var(--muted);font-size:0.95rem}
+  // Experience
+  const expList = $('#experienceList');
+  if (expList) {
+    expList.innerHTML = cvData.experience.map(e =>
+      `<div class="experience-item"><strong>${e.role}</strong> — <span class="meta">${e.company} · ${e.dates}</span><div>${e.desc}</div></div>`
+    ).join('');
+  }
 
-.sidebar h3{margin-top:20px;margin-bottom:8px;color:var(--primary)}
-.sidebar p, .sidebar li{color:var(--text);margin:6px 0;font-size:0.95rem}
-.sidebar ul{padding-left:16px;margin:6px 0}
+  // Education
+  const eduList = $('#educationList');
+  if (eduList) {
+    eduList.innerHTML = cvData.education.map(e =>
+      `<div class="edu-item"><strong>${e.degree}</strong> — <span class="meta">${e.school} · ${e.dates}</span></div>`
+    ).join('');
+  }
 
-.content{padding:28px;flex:1}
-.content h2{margin-top:0;color:var(--primary)}
-.content section{margin-bottom:18px}
+  // Projects
+  const projectsList = $('#projectsList');
+  if (projectsList) {
+    projectsList.innerHTML = cvData.projects.map(p =>
+      `<div class="project-item"><strong>${p.name}</strong><div class="meta">${p.desc}</div></div>`
+    ).join('');
+  }
 
-.experience-item, .edu-item, .project-item{margin-bottom:12px}
-.meta{color:var(--muted);font-size:0.9rem}
+  // Theme toggle
+  const themeBtn = document.getElementById('themeBtn');
+  const printBtn = document.getElementById('printBtn');
 
-.page-footer{text-align:center;padding:14px;color:var(--muted);font-size:0.9rem}
+  const toggleTheme = () => {
+    const isDark = document.body.classList.toggle('dark-mode');
+    themeBtn.setAttribute('aria-pressed', String(isDark));
+    themeBtn.textContent = isDark ? '☀️ Mode clair' : '🌙 Mode sombre';
+  };
 
-/* Mode sombre léger */
-body.dark-mode{background:#1a202c;color:#ffffff}
-body.dark-mode .cv-container{background:#2d3748}
-body.dark-mode .sidebar{background:#283141}
-body.dark-mode .btn-ghost{color:#90cdf4}
-body.dark-mode .content h2,
-body.dark-mode .sidebar h3{color:#90cdf4}
-body.dark-mode .muted{color:#cbd5e0}
-body.dark-mode .sidebar p,
-body.dark-mode .sidebar li,
-body.dark-mode .content p,
-body.dark-mode .content li{color:#e2e8f0}
-body.dark-mode .meta{color:#a0aec0}
-body.dark-mode .profile-title{color:#a0aec0}
+  themeBtn && themeBtn.addEventListener('click', toggleTheme);
 
-/* Réactivité */
-@media (max-width:900px){
-  .cv-container{flex-direction:column}
-  .sidebar{width:100%}
-}
+  // Impression / export PDF (simple)
+  printBtn && printBtn.addEventListener('click', () => {
+    window.print();
+  });
 
-/* Impression (PDF) */
-@media print{
-  body{background:#fff;color:#000}
-  .btn, .btn-ghost{display:none}
-  .page{max-width:800px;margin:0}
-  .cv-container{box-shadow:none;border-radius:0}
-}
+  // Petit suivi des interactions utiles
+  document.querySelectorAll('.contact a').forEach(link => {
+    link.addEventListener('click', () => {
+      console.log(`Lien cliqué : ${link.href}`);
+    });
+  });
+});
