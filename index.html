@@ -1,105 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV - Serigne Babacar Sy Sarr</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Serigne Babacar Sy Sarr — CV</title>
+    <meta name="description" content="CV professionnel de Serigne Babacar Sy Sarr — Développeur / Étudiant en informatique">
+    <link rel="stylesheet" href="style.css">
+    <script src="cv.js" defer></script>
+  </head>
 
-  
-  <header>
-    <h1>Serigne Babacar Sy Sarr</h1>
-    <p>Licence en Informatique</p>
-  </header>
+  <body>
+    <div class="page">
+      <header class="page-header">
+        <div class="header-inner">
+          <div class="name-block">
+            <h1 id="name">Serigne Babacar Sy Sarr</h1>
+            <p id="role" class="muted">Étudiant en Licence 2 — Développement Web & Systèmes</p>
+          </div>
+          <div class="actions">
+            <button id="printBtn" class="btn">Imprimer / Exporter</button>
+            <button id="themeBtn" class="btn btn-ghost" aria-pressed="false">🌙 Mode sombre</button>
+          </div>
+        </div>
+      </header>
 
-  
-  <div class="cv-container">
+      <main class="cv-container" role="main">
+        <aside class="sidebar" aria-label="Informations personnelles">
+          <div class="profile">
+            <img src="IMG-20241210-WA0073.jpg" alt="Photo de Serigne Babacar Sy Sarr" class="photo">
+            <h2 class="profile-name">Serigne Babacar Sy Sarr</h2>
+            <p class="profile-title">Développeur Web • Étudiant en Informatique</p>
+          </div>
 
-    
-    <aside class="sidebar">
-      <div class="profile">
-        <img src="IMG-20241210-WA0073.jpg" alt="Photo de Serigne Babacar Sy Sarr">
-        <h2>Serigne Babacar Sy Sarr</h2>
-        <p>Étudiant en L2 Informatique, passionné par le développement et les technologies du numérique.</p>
-      </div>
+          <section class="contact" id="contact">
+            <h3>Contact</h3>
+            <p>Email: <a href="mailto:sbabacar986@gmail.com">sbabacar986@gmail.com</a></p>
+            <p>Téléphone: <a href="tel:+221778547883">+221 77 854 78 83</a></p>
+            <p>Localisation: Tivaouane, Thiès, Sénégal</p>
+            <p><a href="https://wa.me/221778547883" target="_blank" rel="noopener">WhatsApp</a></p>
+          </section>
 
-      <div class="contact">
-        <h3>Contact</h3>
-        <p>📧 <a href="mailto:sbabacar986@gmail.com">sbabacar986@gmail.com</a></p>
-        <p>📞 <a href="tel:+221778547883">+221 77 854 78 83</a></p>
-        <p>📍 Tivaouane, Thiès, Sénégal</p>
-      </div>
+          <section class="skills" id="skills">
+            <h3>Compétences</h3>
+            <ul>
+              <li>Bonne maitrise des outils informatique</li>
+              <li>Connaissance des langages de programmation </li>
+             <li>Installation et configuration des logiciels</li>
+              <li>Git, outils de déploiement</li>
+             
+            </ul>
+          </section>
 
-      <div class="languages">
-        <h3>Langues</h3>
-        <ul>
-          <li>Français</li>
-          <li>Wolof</li>
-          <li>Anglais (lecture)</li>
-        </ul>
-      </div>
+          <section class="languages" id="languages">
+            <h3>Langues</h3>
+            <ul>
+              <li>Français — courant</li>
+              <li>Wolof — courant</li>
+              <li>Anglais — lecture technique</li>
+            </ul>
+          </section>
+        </aside>
 
-      <div class="competences">
-        <h3>Compétences</h3>
-        <ul>
-          <li>Bonne maîtrise des outils informatiques</li>
-          <li>Connaissance des langages de programmation</li>
-          <li>Installation et configuration de logiciels</li>
-        </ul>
-      </div>
-    </aside>
+        <section class="content" aria-label="Détails du CV">
+          <section id="summary">
+            <h2>Profil</h2>
+            <p id="summaryText">Étudiant en informatique motivé, spécialisé en développement front-end et en administration système. Passionné par la création d'interfaces propres et accessibles, prêt à contribuer à des projets réels.</p>
+          </section>
 
-    
-    <main class="content">
-      <section class="diplomes">
-        <h3>Diplômes</h3>
-        <ul>
-          <li>Licence 2 en cours</li>
-          <li>Licence 1 validée</li>
-          <li>Baccalauréat S2 - 2023</li>
-        </ul>
-      </section>
+          <section id="experience">
+            <h2>Expérience</h2>
+            <div id="experienceProfessionel"></div>
+            <li>Reglage et maintenancedes ordi</li>
+            <li>Initiation aux Systèmes Informatiques</li>
+          </section>
 
-      <section class="experience">
-        <h3>Expériences Professionnelles</h3>
-        <ul>
-          <li>Réglage et maintenance de machines</li>
-          <li>Initiation aux systèmes informatiques</li>
-        </ul>
-      </section>
+          <section id="education">
+            <h2>Formation</h2>
+            <li>Licence1 validée</li>
+            <div id="educationList"></div>
+          </section>
 
-      <section class="loisirs">
-        <h3>Loisirs</h3>
-        <ul>
-          <li>Lecture du Coran</li>
-          <li>Intérêt pour l’Islam</li>
-          <li>Football</li>
-          <li>Entraînement physique</li>
-          <li>Films</li>
-        </ul>
-      </section>
-       
-      <section class="Formation">
-        <h3>Formation</h3>
-        <ul>
-          <li>commerce</li>
-          <li>desing cours en ligne et certifie</li>
-          <li>faire monter des cables electriques</li>
-          <li>savoire utiliser les donner sur l'internet</li>
-        </ul>
-      </section>
-    </main>
-  </div>
+          <section id="projects">
+            <h2></h2>
+            <div id="projectsList"></div>
+          </section>
 
-  
-  <footer>
-    <p>© 2025 Serigne Babacar Sy Sarr</p>
-  </footer>
+          <section id="extra">
+            <h2>Centres d'intérêt</h2>
+            <p>Football, lecture, technologies web et amélioration continue.</p>
+          </section>
+        </section>
+      </main>
 
-</body>
+      <footer class="page-footer">
+        <p>© <span id="year">2025</span> Serigne Babacar Sy Sarr</p>
+      </footer>
+    </div>
+  </body>
 </html>
-
-
-
